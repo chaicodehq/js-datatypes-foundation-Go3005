@@ -47,20 +47,63 @@
  */
 export function repeatPattern(pattern, times) {
   // Your code here
+  if (
+    typeof pattern !== "string" ||
+    typeof times !== "number" ||
+    times % 1 !== 0 ||
+    times <= 0
+  ) {
+    return "";
+  } else {
+    return pattern.repeat(times);
+  }
 }
 
 export function extractRangoliCenter(design, start, end) {
   // Your code here
+  if (typeof design !== "string" || typeof (start && end) !== "number") {
+    return "";
+  } else {
+    let center = design.slice(start, end);
+    return center;
+  }
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
   // Your code here
+  if (typeof colorString !== "string") {
+    return "";
+  } else {
+    let newColorString = colorString.split(oldSep).join(newSep);
+    return newColorString;
+  }
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
   // Your code here
+  if (
+    typeof design !== "string" ||
+    typeof oldColor !== "string" ||
+    typeof newColor !== "string"
+  ) {
+    return "";
+  } else {
+    return design.replaceAll(oldColor, newColor);
+  }
 }
 
 export function makeRangoliBorder(char, length) {
   // Your code here
+  if (
+    typeof char !== "string" ||
+    typeof length !== "number" ||
+    length <= 0 ||
+    length % 1 !== 0
+  ) {
+    return "";
+  } else {
+    let pattern = char.repeat(length);
+    let border = pattern.slice(0, length);
+    return border;
+  }
 }
