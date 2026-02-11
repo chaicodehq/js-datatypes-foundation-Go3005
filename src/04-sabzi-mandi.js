@@ -49,20 +49,71 @@
  */
 export function addToCart(cart, item) {
   // Your code here
+  if (typeof item !== "string" || item.length == 0) {
+    return cart.length;
+  }
+  if (Array.isArray(cart) !== true) {
+    return -1;
+  } else {
+    cart.push(item);
+    return cart.length;
+  }
 }
 
 export function addUrgentItem(cart, item) {
   // Your code here
+  // - Agar item valid string nahi hai, return cart unchanged
+  if (typeof item !== "string" || item.length == 0) {
+    return cart;
+  }
+  if (Array.isArray(cart) !== true) {
+    //Agar cart not array, return []
+    return [];
+  } else {
+    //   .unshift() se item ko cart ke BEGINNING mein add karo (pehle khareedna hai!)
+    //  *      - Return: updated cart array.
+    cart.unshift(item);
+    return cart;
+  }
 }
 
 export function removeLastItem(cart) {
   // Your code here
+  //  *      - Agar cart not array ya empty hai, return undefined
+  if (!Array.isArray(cart) || cart.length == 0) {
+    return undefined;
+  } else {
+    //.pop() se last sabzi remove karo
+    //- Return: the removed item
+    let poppedItem = cart.pop();
+    return poppedItem;
+  }
 }
 
 export function isInCart(cart, item) {
   // Your code here
+  if (!Array.isArray(cart)) {
+    //Agar cart not array, return false
+    return false;
+  } else {
+    //  *      - .includes() se check karo ki item cart mein hai ya nahi
+    //  *      - Example: isInCart(["tamatar", "pyaaz"], "pyaaz") => true
+    //  *      - Example: isInCart(["tamatar", "pyaaz"], "mirchi") => false
+    return cart.includes(item);
+  }
 }
 
 export function mergeCarts(cart1, cart2) {
   // Your code here
+  //   .concat() se do carts ko combine karo
+  //  *      - Return: new merged array
+  //  *      - Agar koi bhi array nahi hai, usse empty array [] maan lo
+  //  *      - Example: mergeCarts(["tamatar"], ["mirchi", "adrak"]) => ["tamatar", "mirchi", "adrak"]
+  if (!Array.isArray(cart1)) {
+    cart1 = [];
+  }
+  if (!Array.isArray(cart2)) {
+    cart2 = [];
+  }
+  return cart1.concat(cart2);
 }
